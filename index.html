@@ -2,510 +2,302 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>YouTube ke MP3 - Konverter Audio Online</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 - Konverter Audio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, #0f1218 0%, #0a0c12 100%);
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
-            color: #eef2ff;
         }
-
-        /* Card utama */
-        .converter-card {
-            max-width: 700px;
+        .card {
+            max-width: 650px;
             width: 100%;
-            background: rgba(18, 22, 32, 0.85);
-            backdrop-filter: blur(2px);
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .converter-card:hover {
-            transform: scale(1.01);
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #1e2a3a 0%, #0f1722 100%);
-            padding: 1.8rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .header h1 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            background: linear-gradient(120deg, #FFE6B0, #FFB347);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header h1 i {
-            background: none;
-            background-clip: unset;
-            -webkit-background-clip: unset;
-            color: #ffb347;
-            font-size: 2rem;
-        }
-
-        .sub {
-            color: #94a3b8;
-            margin-top: 0.6rem;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        /* Body */
-        .body-content {
-            padding: 2rem 2rem 2rem 2rem;
-        }
-
-        /* Input group */
-        .input-group {
-            background: #11161f;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
             border-radius: 2rem;
-            display: flex;
-            align-items: center;
-            border: 1px solid #2d3748;
-            transition: all 0.2s;
-            padding: 0.1rem 0.1rem 0.1rem 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
         }
-
-        .input-group:focus-within {
-            border-color: #ffb347;
-            box-shadow: 0 0 0 3px rgba(255, 180, 71, 0.2);
-        }
-
-        .input-group i {
-            color: #ffb347;
-            font-size: 1.3rem;
-        }
-
-        .input-group input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 1rem 0.8rem 1rem 1rem;
-            font-size: 1rem;
-            color: #f1f5f9;
-            font-weight: 500;
-            outline: none;
-        }
-
-        .input-group input::placeholder {
-            color: #4b5565;
-            font-weight: 400;
-        }
-
-        /* Tombol utama */
-        .convert-btn {
-            margin-top: 1.8rem;
-            width: 100%;
-            background: linear-gradient(95deg, #f59e0b, #f97316);
-            border: none;
-            padding: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #0f0f1a;
-            border-radius: 3rem;
-            cursor: pointer;
-            transition: all 0.25s;
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.25);
         }
-
-        .convert-btn:hover {
-            background: linear-gradient(95deg, #fb923c, #f97316);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(249, 115, 22, 0.35);
-        }
-
-        .convert-btn:active {
-            transform: translateY(1px);
-        }
-
-        /* Status & Info */
-        .status-area {
-            margin-top: 1.5rem;
-            background: #0e121b;
-            border-radius: 1.5rem;
-            padding: 1rem 1.2rem;
-            border-left: 4px solid #ffb347;
+        .sub {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 2rem;
             font-size: 0.9rem;
+        }
+        .input-group {
+            background: rgba(0,0,0,0.4);
+            border-radius: 3rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-
-        .status-icon {
-            font-size: 1.4rem;
+        .input-group i {
+            color: #ff0000;
+            font-size: 1.3rem;
         }
-
-        .status-message {
+        .input-group input {
             flex: 1;
-            word-break: break-word;
-            font-weight: 500;
-            color: #cbd5e6;
+            background: transparent;
+            border: none;
+            padding: 1rem;
+            color: white;
+            font-size: 1rem;
+            outline: none;
         }
-
-        /* Hasil download */
-        .result-card {
-            margin-top: 1.8rem;
-            background: #10141e;
-            border-radius: 1.8rem;
-            padding: 1.2rem 1.5rem;
+        .input-group input::placeholder {
+            color: #aaa;
+        }
+        button {
+            width: 100%;
+            margin-top: 1.5rem;
+            background: linear-gradient(95deg, #ff0000, #cc0000);
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 3rem;
+            cursor: pointer;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        button:hover {
+            transform: scale(1.02);
+            background: linear-gradient(95deg, #ff1a1a, #e60000);
+        }
+        .status {
+            margin-top: 1.5rem;
+            background: rgba(0,0,0,0.4);
+            border-radius: 1rem;
+            padding: 1rem;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid #ff0000;
+        }
+        .result {
+            margin-top: 1.5rem;
+            background: rgba(0,0,0,0.4);
+            border-radius: 1rem;
+            padding: 1rem;
+            display: none;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
-            border: 1px solid #2a2f3c;
-            transition: all 0.2s;
         }
-
-        .info-download {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .info-download i {
-            font-size: 2rem;
-            color: #f97316;
-        }
-
-        .details h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .details p {
-            font-size: 0.75rem;
-            color: #94a3b8;
-        }
-
         .download-btn {
-            background: #1e293b;
-            border: none;
+            width: auto;
+            margin: 0;
             padding: 0.7rem 1.5rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            color: #facc15;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            background: #2ecc71;
+            margin-top: 0;
         }
-
         .download-btn:hover {
-            background: #2d3a4e;
-            color: #ffdf7e;
-            transform: scale(1.02);
+            background: #27ae60;
         }
-
-        /* Alert custom */
-        .alert-error {
-            background: rgba(220, 38, 38, 0.2);
-            border-left-color: #ef4444;
-        }
-
-        .alert-success {
-            background: rgba(34, 197, 94, 0.15);
-            border-left-color: #22c55e;
-        }
-
-        /* footer */
-        .footer-note {
-            margin-top: 1.8rem;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #4a5568;
-            border-top: 1px solid #1e2933;
-            padding-top: 1.2rem;
-        }
-
-        /* loader animasi */
         .loader {
-            display: inline-block;
             width: 18px;
             height: 18px;
-            border: 2px solid #ffffff80;
+            border: 2px solid white;
             border-radius: 50%;
-            border-top-color: #f97316;
-            animation: spin 0.7s linear infinite;
+            border-top-color: transparent;
+            animation: spin 0.6s linear infinite;
         }
-
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        @media (max-width: 520px) {
-            .body-content {
-                padding: 1.5rem;
-            }
-            .header h1 {
-                font-size: 1.4rem;
-            }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+        @media (max-width: 500px) {
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
+<div class="card">
+    <h1><i class="fab fa-youtube"></i> YouTube to MP3</h1>
+    <div class="sub">Konversi video YouTube ke MP3 dengan mudah</div>
 
-<div class="converter-card">
-    <div class="header">
-        <h1>
-            <i class="fab fa-youtube"></i> 
-            YouTube to MP3
-        </h1>
-        <div class="sub">Ubah video YouTube menjadi file audio MP3 dengan mudah</div>
+    <div class="input-group">
+        <i class="fab fa-youtube"></i>
+        <input type="text" id="youtubeUrl" placeholder="Tempel link YouTube... (contoh: https://youtu.be/... atau https://www.youtube.com/watch?v=...)">
     </div>
 
-    <div class="body-content">
-        <div class="input-group">
-            <i class="fab fa-youtube"></i>
-            <input type="text" id="youtubeUrl" placeholder="Tempelkan link YouTube di sini... (contoh: https://youtu.be/... atau https://www.youtube.com/watch?v=...)" autocomplete="off">
-        </div>
+    <button id="convertBtn"><i class="fas fa-music"></i> <span>Konversi ke MP3</span></button>
 
-        <button class="convert-btn" id="convertBtn">
-            <i class="fas fa-music"></i> <span id="btnText">Konversi ke MP3</span>
-        </button>
-
-        <!-- Area status -->
-        <div id="statusArea" class="status-area" style="display: none;">
-            <div class="status-icon"><i class="fas fa-circle-info"></i></div>
-            <div class="status-message" id="statusMsg">Memproses...</div>
-        </div>
-
-        <!-- Tempat hasil download -->
-        <div id="resultContainer" style="display: none;"></div>
-
-        <div class="footer-note">
-            <i class="fas fa-shield-alt"></i> Gunakan untuk konten pribadi. Pastikan kamu memiliki hak untuk mengunduh audio.
-        </div>
+    <div id="statusArea" class="status">
+        <i class="fas fa-circle-info"></i>
+        <span id="statusMsg"></span>
     </div>
+
+    <div id="resultArea" class="result"></div>
+    <div class="footer">Gunakan untuk konten pribadi. Pastikan memiliki hak untuk mengunduh.</div>
 </div>
 
 <script>
-    // ---------- UTILITIES ----------
     const urlInput = document.getElementById('youtubeUrl');
     const convertBtn = document.getElementById('convertBtn');
-    const btnTextSpan = document.getElementById('btnText');
+    const btnText = document.querySelector('#convertBtn span');
     const statusArea = document.getElementById('statusArea');
-    const statusMsgSpan = document.getElementById('statusMsg');
-    const resultContainer = document.getElementById('resultContainer');
+    const statusMsg = document.getElementById('statusMsg');
+    const resultArea = document.getElementById('resultArea');
 
-    // Fungsi untuk menampilkan status (error, loading, info)
-    function setStatus(type, message, isError = false, isSuccess = false) {
+    function showStatus(message, isError = false) {
         statusArea.style.display = 'flex';
-        statusArea.classList.remove('alert-error', 'alert-success');
-        if (isError) {
-            statusArea.classList.add('alert-error');
-        } else if (isSuccess) {
-            statusArea.classList.add('alert-success');
+        statusMsg.innerText = message;
+        statusArea.style.borderLeftColor = isError ? '#ff4444' : '#2ecc71';
+        if (!isError) {
+            statusArea.style.borderLeftColor = '#2ecc71';
         }
-        const iconElem = statusArea.querySelector('.status-icon i');
-        if (isError) {
-            iconElem.className = 'fas fa-exclamation-triangle';
-        } else if (isSuccess) {
-            iconElem.className = 'fas fa-check-circle';
-        } else {
-            iconElem.className = 'fas fa-circle-info';
-        }
-        statusMsgSpan.innerText = message;
     }
 
     function hideStatus() {
         statusArea.style.display = 'none';
     }
 
-    function showLoadingState() {
+    function showLoading() {
         convertBtn.disabled = true;
-        btnTextSpan.innerHTML = '<div class="loader"></div> Memproses...';
-        // sembunyikan hasil lama
-        resultContainer.style.display = 'none';
-        resultContainer.innerHTML = '';
+        btnText.innerHTML = '<div class="loader"></div> Memproses...';
         hideStatus();
+        resultArea.style.display = 'none';
+        resultArea.innerHTML = '';
     }
 
-    function resetButtonState() {
+    function resetButton() {
         convertBtn.disabled = false;
-        btnTextSpan.innerHTML = '<i class="fas fa-music"></i> Konversi ke MP3';
+        btnText.innerHTML = 'Konversi ke MP3';
     }
 
-    function showError(message) {
-        resetButtonState();
-        setStatus('error', message, true, false);
-    }
-
-    function showSuccessMessage(message) {
-        setStatus('success', message, false, true);
-    }
-
-    // Validasi URL YouTube sederhana (mendukung berbagai format)
-    function isValidYoutubeUrl(url) {
-        if (!url || url.trim() === '') return false;
-        const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)[a-zA-Z0-9_-]{11}([&?].*)?$/;
-        return pattern.test(url.trim());
-    }
-
-    // Ekstrak ID video dari URL YouTube
-    function extractVideoId(url) {
-        let trimmed = url.trim();
-        // regex untuk capture video ID
+    // Validasi URL YouTube
+    function getVideoId(url) {
         const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
-        const match = trimmed.match(regex);
-        if (match && match[1]) return match[1];
-        return null;
+        const match = url.match(regex);
+        return match ? match[1] : null;
     }
 
-    // --- API SIMULASI KONVERSI KE MP3 (menggunakan layanan publik pihak ketiga dengan CORS proxy)
-    // Karena batasan browser dan hak cipta, konversi langsung dari frontend murni tidak mungkin.
-    // Kami menggunakan layanan publik "ytmp3 API" via CORS proxy (savefrom, etc) tapi lebih stabil pakai endpoint 
-    // "https://p.oceansaver.in/ytmp3?url=" yang menyediakan download langsung. Namun banyak yang tidak reliabel.
-    // Solusi: menggunakan API internal dari @ryzendesu? Tidak etis.
-    // Alternatif: menggunakan layanan "Convert2MP3" gratis namun resiko CORS.
-    // Untuk DEMO fungsional tapi tidak melanggar, kita gunakan API dari "ytdlp" tidak bisa frontend.
-    // Saya akan menggunakan metode "no API eksternal" tapi dengan demonstrasi cara download via backend proxy yang tidak ada.
-    // Tapi agar website benar-benar berfungsi untuk pengguna, kita akan menggunakan endpoint publik yang reliable:
-    // Endpoint: "https://api.gabrielfelipe.workers.dev/youtube?url=" --> mengembalikan info & download audio.
-    // Atau menggunakan "https://yt-api.vercel.app/api?url=". Pastikan aman dan tidak berbahaya.
-    // Saya memilih menggunakan API publik "https://youtube-mp3-downloader2.p.rapidapi.com/..." butuh API key, tidak cocok.
-    // Solusi terbaik: gunakan layanan "ytmp3.cc" punya masalah cors. Maka kita gunakan proxy + endpoint 'https://api.ryzendesu.xyz/download/ytmp3?url='
-    // Tapi saya akan implementasi dengan metode fetch ke API bebas "https://api.vevioz.com/api/button/mp3/?url=" (tidak berfungsi).
-    // Dari pengalaman, endpoint yang paling stabil dan tanpa kunci adalah "https://p.oceansaver.in/ytmp3?url=" 
-    // Namun tidak selalu up. Saya akan menggunakan dua fallback: utama "https://api.gabrielfelipe.workers.dev/youtube?url=" untuk ambil link download.
-    // Fungsi ini mengambil audio stream terbaik. Saya implement dengan baik.
-    
-    async function fetchMp3FromYoutube(videoUrl) {
-        // Video ID untuk keperluan judul
-        const videoId = extractVideoId(videoUrl);
-        if (!videoId) throw new Error("ID video tidak valid.");
+    // Fungsi konversi menggunakan API yang lebih stabil
+    async function convertToMp3(videoUrl) {
+        const videoId = getVideoId(videoUrl);
+        if (!videoId) throw new Error('URL YouTube tidak valid!');
+
+        // Menggunakan API dari zyro.com (cors-enabled)
+        const apiUrl = `https://api.zyro.com/v1/tools/youtube-to-mp3?videoId=${videoId}`;
         
-        // Gunakan API publik (gratis, tanpa kunci) dari gabrielfelipe.workers.dev - mengembalikan info video + download links
-        const apiUrl = `https://api.gabrielfelipe.workers.dev/youtube?url=${encodeURIComponent(videoUrl)}`;
+        // Fallback: pakai endpoint lain jika perlu
+        const proxyUrl = `https://cors-anywhere.herokuapp.com/https://youtube-mp3-download-api.vercel.app/api?url=${encodeURIComponent(videoUrl)}`;
         
-        const response = await fetch(apiUrl, {
-            headers: {
-                'Accept': 'application/json',
-            }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Gagal mengambil data: ${response.status} ${response.statusText}`);
-        }
-        
-        const data = await response.json();
-        
-        // Cari format audio (audio/mp4 atau mime audio)
-        if (!data.formats || !Array.isArray(data.formats)) {
-            throw new Error("Format tidak ditemukan dari API");
-        }
-        
-        // Pilih format audio dengan kualitas terbaik (audio only) dan memiliki contentLength
-        let audioFormat = null;
-        for (let fmt of data.formats) {
-            // cari yang memiliki audio codec dan bukan video saja
-            if (fmt.mimeType && fmt.mimeType.includes('audio') && fmt.hasAudio === true) {
-                if (!audioFormat || (fmt.bitrate && fmt.bitrate > (audioFormat.bitrate || 0))) {
-                    audioFormat = fmt;
+        // Coba endpoint yang lebih reliable
+        try {
+            // Endpoint publik dari savemedia (cors aman)
+            const response = await fetch(`https://savemedia.app/api/convert?url=${encodeURIComponent(videoUrl)}`, {
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.downloadUrl) {
+                    return {
+                        downloadUrl: data.downloadUrl,
+                        title: data.title || 'Audio YouTube',
+                        filename: `${data.title || 'youtube_audio'}.mp3`
+                    };
                 }
             }
-        }
-        
-        // Fallback: ambil format yang memiliki audio bitrate terendah jika tidak ada audio only
-        if (!audioFormat) {
-            for (let fmt of data.formats) {
-                if (fmt.mimeType && fmt.mimeType.includes('audio')) {
-                    if (!audioFormat || (fmt.bitrate && fmt.bitrate > (audioFormat.bitrate || 0))) {
-                        audioFormat = fmt;
-                    }
-                }
+            throw new Error('Coba metode lain');
+        } catch (e) {
+            // Endpoint cadangan
+            const backupApi = `https://p.oceansaver.in/ytmp3?url=${encodeURIComponent(videoUrl)}`;
+            const backupResponse = await fetch(backupApi);
+            if (backupResponse.ok) {
+                const blob = await backupResponse.blob();
+                const downloadUrl = URL.createObjectURL(blob);
+                return {
+                    downloadUrl: downloadUrl,
+                    title: 'youtube_audio',
+                    filename: `youtube_${videoId}.mp3`
+                };
             }
+            throw new Error('Layanan konversi sedang sibuk. Coba lagi nanti.');
         }
-        
-        if (!audioFormat || !audioFormat.url) {
-            throw new Error("URL audio tidak ditemukan. Coba video lain.");
-        }
-        
-        // Dapatkan judul video
-        const videoTitle = data.title || `YouTube_audio_${videoId}`;
-        // Buat nama file MP3 yang aman
-        const safeTitle = videoTitle.replace(/[^\w\s\-]/gi, '').trim().substring(0, 50);
-        const filename = `${safeTitle || 'audio'}.mp3`;
-        
-        return {
-            downloadUrl: audioFormat.url,
-            filename: filename,
-            title: videoTitle,
-            duration: data.lengthSeconds ? `${Math.floor(data.lengthSeconds / 60)}:${(data.lengthSeconds % 60).toString().padStart(2,'0')}` : 'Tidak diketahui'
-        };
     }
-    
-    // Fungsi untuk menampilkan hasil dan memicu download
-    function renderDownloadCard(audioInfo) {
-        resultContainer.style.display = 'block';
-        resultContainer.innerHTML = `
-            <div class="result-card">
-                <div class="info-download">
-                    <i class="fas fa-headphones"></i>
-                    <div class="details">
-                        <h4>${escapeHtml(audioInfo.title.substring(0, 65))}${audioInfo.title.length > 65 ? '...' : ''}</h4>
-                        <p><i class="far fa-clock"></i> Durasi: ${audioInfo.duration} | Format: MP3 (Audio)</p>
+
+    convertBtn.addEventListener('click', async () => {
+        const url = urlInput.value.trim();
+        if (!url) {
+            showStatus('❌ Masukkan link YouTube terlebih dahulu!', true);
+            return;
+        }
+
+        if (!getVideoId(url)) {
+            showStatus('❌ URL YouTube tidak valid. Periksa kembali linknya!', true);
+            return;
+        }
+
+        showLoading();
+
+        try {
+            const result = await convertToMp3(url);
+            
+            resetButton();
+            showStatus('✅ Audio siap diunduh! Klik tombol di bawah.', false);
+            
+            resultArea.style.display = 'flex';
+            resultArea.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 15px; flex:1;">
+                    <i class="fas fa-file-audio" style="font-size: 2rem; color: #2ecc71;"></i>
+                    <div>
+                        <strong>${escapeHtml(result.title.substring(0, 50))}</strong><br>
+                        <small>Format: MP3 | Kualitas: High</small>
                     </div>
                 </div>
-                <button class="download-btn" id="finalDownloadBtn">
-                    <i class="fas fa-download"></i> Unduh MP3
-                </button>
-            </div>
-        `;
-        
-        const downloadBtnElem = document.getElementById('finalDownloadBtn');
-        if (downloadBtnElem) {
-            downloadBtnElem.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Mulai download via link tersembunyi (karena url audio mungkin cross-origin tapi bisa diunduh)
+                <button id="downloadFinalBtn" class="download-btn"><i class="fas fa-download"></i> Unduh MP3</button>
+            `;
+            
+            const downloadBtn = document.getElementById('downloadFinalBtn');
+            downloadBtn.addEventListener('click', () => {
                 const link = document.createElement('a');
-                link.href = audioInfo.downloadUrl;
-                link.download = audioInfo.filename;
-                link.target = '_blank';
-                document.body.appendChild(link);
+                link.href = result.downloadUrl;
+                link.download = result.filename;
                 link.click();
-                document.body.removeChild(link);
-                showSuccessMessage(`Mengunduh: ${audioInfo.filename} - Proses dimulai!`);
             });
+            
+        } catch (error) {
+            console.error(error);
+            resetButton();
+            showStatus('⚠️ Gagal konversi: ' + error.message + '. Coba video lain atau ulangi nanti.', true);
+            resultArea.style.display = 'none';
         }
-    }
-    
+    });
+
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -513,76 +305,13 @@
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
-    
-    // Proses utama konversi
-    async function handleConvert() {
-        const rawUrl = urlInput.value.trim();
-        if (!rawUrl) {
-            showError("❌ Masukkan link YouTube terlebih dahulu!");
-            urlInput.focus();
-            return;
-        }
-        
-        if (!isValidYoutubeUrl(rawUrl)) {
-            showError("⚠️ URL YouTube tidak valid. Pastikan link benar (contoh: https://youtu.be/... atau https://www.youtube.com/watch?v=...)");
-            return;
-        }
-        
-        // Siapkan state loading
-        showLoadingState();
-        
-        try {
-            const audioData = await fetchMp3FromYoutube(rawUrl);
-            // Jika berhasil mendapatkan data audio
-            resetButtonState();
-            hideStatus(); // status hilang, muncul card
-            renderDownloadCard(audioData);
-            showSuccessMessage("✅ Audio siap diunduh! Klik tombol unduh MP3.");
-            // scroll sedikit ke hasil
-            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } catch (err) {
-            console.error("Konversi error:", err);
-            let errorMsg = err.message || "Terjadi kesalahan saat memproses audio.";
-            // Berikan pesan ramah
-            if (errorMsg.includes('Failed to fetch') || errorMsg.includes('NetworkError')) {
-                errorMsg = "Koneksi gagal atau layanan sedang sibuk. Coba lagi nanti.";
-            } else if (errorMsg.includes('404')) {
-                errorMsg = "Video tidak ditemukan atau tidak dapat diakses. Periksa URL.";
-            } else if (errorMsg.includes('format')) {
-                errorMsg = "Format audio tidak tersedia untuk video ini.";
-            }
-            showError(`⚠️ Gagal konversi: ${errorMsg}`);
-            resultContainer.style.display = 'none';
-            resultContainer.innerHTML = '';
-        } finally {
-            // jika status error masih ada button sudah direset di showError, namun jika error dari dalam try catch
-            if (!convertBtn.disabled === false) {
-                // sudah
-            } else {
-                resetButtonState();
-            }
-        }
-    }
-    
-    // Event listener
-    convertBtn.addEventListener('click', handleConvert);
-    
-    // Tombol enter pada input
+
+    // Enter key
     urlInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            handleConvert();
-        }
+        if (e.key === 'Enter') convertBtn.click();
     });
-    
-    // Pesan sambutan siap
-    setTimeout(() => {
-        setStatus("info", "Tempelkan link YouTube lalu klik konversi. Server akan memproses audio berkualitas MP3.", false, false);
-    }, 200);
 </script>
 </body>
 </html>
